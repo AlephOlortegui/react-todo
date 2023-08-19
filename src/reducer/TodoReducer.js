@@ -38,6 +38,13 @@ const TodoReducer = (state, action) => {
         ...state,
         todos: []
       }
+    case "REBOOT":
+      return{
+        ...state,
+        editFlag: false,
+        textToEdit: '',
+        editID: '',
+      }
     default:
       return state
   }

@@ -16,6 +16,8 @@ const Form = () => {
     setText('')
   }
 
+  const back2Default = () => { dispatch({type: "REBOOT"}) }
+
   useEffect(() => {
     setText(textToEdit)
   }, [textToEdit])
@@ -28,7 +30,7 @@ const Form = () => {
             placeholder='Type something...' required/>
       </div>
       <button className="btn" type="submit">{!editFlag ? <BiPlusCircle /> : <BiUpArrowCircle/>}</button>
-      {editFlag && <button className="btn" type="button" ><BiBlock /></button>}
+      {editFlag && <button className="btn" type="button" onClick={back2Default}><BiBlock /></button>}
     </form>
   )
 }
