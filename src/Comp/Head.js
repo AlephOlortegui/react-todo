@@ -5,7 +5,7 @@ import { ThemeContext } from "../Context/ThemeProvider";
 
 const Head = () => {
   const {isDark, dispatch} = useContext(ThemeContext)
-  console.log(isDark)
+  //console.log(isDark)
   return (
     <header>
       <h1>TODO</h1>
