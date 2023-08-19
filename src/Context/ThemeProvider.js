@@ -14,7 +14,8 @@ const ThemeReducer = (state, action) => {
 export const ThemeProvider = ({children}) => { 
   const [isDark, dispatch] = useReducer(ThemeReducer, null, ()=>{
     const LS_theme = localStorage.getItem('theme')
-    return LS_theme ? Boolean(LS_theme) : false;
+    // Identity Operator (===)
+    return LS_theme ? LS_theme === 'true' : false;
   })
   
   useEffect(() => {
