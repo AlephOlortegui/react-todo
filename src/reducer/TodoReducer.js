@@ -20,6 +20,13 @@ const TodoReducer = (state, action) => {
             return todo
         })
       }
+    case "EDIT_CONFIG":
+      return {
+        ...state,
+        editFlag: !state.editFlag,
+        textToEdit: action.payload.text,
+        editID: action.payload.id 
+      }
     case "DELETE_TODO":
       return {
         ...state,

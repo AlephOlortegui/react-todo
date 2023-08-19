@@ -2,7 +2,10 @@ import { createContext, useReducer } from "react"
 import TodoReducer from "../reducer/TodoReducer"
 
 const initialState = {
-  todos : []
+  todos : [],
+  editFlag: false,
+  editID: '',
+  textToEdit: ''
 }
 
 export const TodoContext = createContext()
@@ -13,6 +16,9 @@ export const TodoProvider = ({children}) => {
   return (
     <TodoContext.Provider value={{
       todos: state.todos,
+      editFlag: state.editFlag,
+      editID: state.editID,
+      textToEdit: state.textToEdit,
       dispatch
     }}>
       {children}

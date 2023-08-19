@@ -1,10 +1,11 @@
 import { nanoid } from "nanoid";
-import { useContext, useState } from "react";
-import { BiPlusCircle} from "react-icons/bi";
+import { useContext, useEffect, useState } from "react";
+import { BiBlock, BiPlusCircle, BiUpArrowCircle} from "react-icons/bi";
 import { TodoContext } from "../Context/TodoProvider";
 
 const Form = () => {
-  const {dispatch} = useContext(TodoContext)
+  const {dispatch, editFlag, textToEdit} = useContext(TodoContext)
+
   const [text, setText] = useState('')
   const handleSubmit = (e) => { 
     e.preventDefault();
@@ -14,6 +15,11 @@ const Form = () => {
     //clear input
     setText('')
   }
+
+  useEffect(() => {
+    setText(textToEdit)
+  }, [textToEdit])
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="input-container">
@@ -21,7 +27,8 @@ const Form = () => {
             onChange={(e) => setText(e.target.value)}
             placeholder='Type something...' required/>
       </div>
-      <button className="btn" type="submit"><BiPlusCircle /></button>
+      <button className="btn" type="submit">{!editFlag ? <BiPlusCircle /> : <BiUpArrowCircle/>}</button>
+      {editFlag && <button className="btn" type="button" ><BiBlock /></button>}
     </form>
   )
 }
