@@ -9,9 +9,17 @@ const Form = () => {
   const [text, setText] = useState('')
   const handleSubmit = (e) => { 
     e.preventDefault();
-    const newTodo = {id: nanoid(), text, isChecked: false}
-    //use our context with - create or pass an obj with any custom properties you want
-    dispatch({type: "ADD_TODO", payload: newTodo}) //or newTodo:newTodo})
+
+    if(!editFlag){ //this is meant for creating a new item only
+      const newTodo = {id: nanoid(), text, isChecked: false}
+      //use our context with - create or pass an obj with any custom properties you want
+      dispatch({type: "ADD_TODO", payload: newTodo}) //or newTodo:newTodo})
+    }
+    else if(editFlag){
+      console.log('text form: ',text)
+      dispatch({type: "EDIT_TODO", payload: text})
+      back2Default()
+    }
     //clear input
     setText('')
   }

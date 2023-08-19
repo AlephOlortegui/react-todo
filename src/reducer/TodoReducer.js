@@ -27,6 +27,19 @@ const TodoReducer = (state, action) => {
         textToEdit: action.payload.text,
         editID: action.payload.id 
       }
+    case "EDIT_TODO":
+      return {
+        ...state,
+        todos: state.todos.map(todo => {
+          if(todo.id === state.editID){
+            return {
+              ...todo,
+              text: action.payload
+            }
+          }
+          return todo
+        })
+      }
     case "DELETE_TODO":
       return {
         ...state,
