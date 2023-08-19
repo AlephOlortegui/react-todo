@@ -1,14 +1,16 @@
 import { useContext } from "react";
-import { TodoContext } from "../Context/TodoProvider";
+// import { TodoContext } from "../Context/TodoProvider";
 import TodoList from "./TodoList";
 import AlertMsg from "./AlertMsg";
+import { MemoContext } from "../Context/MemoProvider";
 
 const Todos = () => {
-  const {todos} = useContext(TodoContext)
+  // const {todos} = useContext(TodoContext)
+  const {filteredTodos} = useContext(MemoContext)
   return (
     <ul className="todos">
-      {todos.length > 0 ? (
-          todos.map(todo => (
+      {filteredTodos.length > 0 ? (
+          filteredTodos.map(todo => (
             <TodoList key={todo.id} {...todo}/>
           ))
         ) : (

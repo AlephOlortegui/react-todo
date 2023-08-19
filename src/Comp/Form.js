@@ -16,7 +16,7 @@ const Form = () => {
       dispatch({type: "ADD_TODO", payload: newTodo}) //or newTodo:newTodo})
     }
     else if(editFlag){
-      console.log('text form: ',text)
+      //console.log('text form: ',text)
       dispatch({type: "EDIT_TODO", payload: text})
       back2Default()
     }
