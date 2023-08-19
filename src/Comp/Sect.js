@@ -1,4 +1,11 @@
+import { useContext } from "react"
+import { TodoContext } from "../Context/TodoProvider"
+
 const Sect = () => {
+  const {dispatch} = useContext(TodoContext)
+  const clearAll = () => { 
+    dispatch({type: "DELETE_ALL"})
+   }
   return (
     <section>
       <p className="counter"><span>3</span> items left</p>
@@ -8,7 +15,7 @@ const Sect = () => {
         <button className="btn">Completed</button>
       </div>
       <div className="corner">
-        <button className="btn">Clear All Items</button>
+        <button className="btn" onClick={clearAll}>Clear All Items</button>
       </div>
     </section>
   )

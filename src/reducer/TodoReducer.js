@@ -20,6 +20,17 @@ const TodoReducer = (state, action) => {
             return todo
         })
       }
+    case "DELETE_TODO":
+      return {
+        ...state,
+        //since we're going to overwrite
+        todos: state.todos.filter(todo => todo.id !== action.payload)
+      }
+    case "DELETE_ALL":
+      return{
+        ...state,
+        todos: []
+      }
     default:
       return state
   }
